@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
 
 export default class Form extends Component {
     constructor(props) {
@@ -17,6 +17,10 @@ export default class Form extends Component {
     }
     handlePress(){
         if(this.state.title.length < 3){
+            Alert.alert(
+                "Write title properly!!",
+                "Please set todo title properly ..."
+            )
             return;
         }
         this.props.addNewTodo(this.state.title);

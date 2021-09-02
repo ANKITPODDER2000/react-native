@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default class Todo extends Component {
+    constructor(props) {
+        super(props);
+        this.handlePress = this.handlePress.bind(this);
+    }
+    
     handlePress(){
         Alert.alert("Oops" , "Have You done your todo ?" , [
-            {text : 'Yes' , onPress : () => console.log("Great Job!!")},
-            {text : 'No' , onPress : () => console.log("Not Done!!!")}
+            {text : 'Yes' , onPress : () => {
+                this.props.deleteTodo(this.props.obj.key);
+            }},
+            {text : 'No'}
         ])
     }
     render() {
@@ -13,11 +20,11 @@ export default class Todo extends Component {
         return (
             <View style={styles.container}>
                 <Text style={{paddingHorizontal : 20}}>{this.props.obj.title}</Text>
-                <View style={styles.closebtn}>
-                    <TouchableOpacity onPress = {this.handlePress}>
+                <TouchableOpacity onPress = {this.handlePress}>
+                    <View style={styles.closebtn}>
                         <Text>X</Text>
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
             </View>
         )
     }

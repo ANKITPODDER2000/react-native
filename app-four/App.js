@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar, Text, View , FlatList } from 'react-native';
+import { StatusBar, Text, View , FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Form from './components/Form';
 import Header from "./components/Header";
 import Todo from './components/Todo';
@@ -15,6 +15,7 @@ export default class App extends Component {
             key : 2
         };
         this.addNewTodo = this.addNewTodo.bind(this);
+        this.deleteTodo = this.deleteTodo.bind(this);
     }
 
     addNewTodo(val){
@@ -27,10 +28,16 @@ export default class App extends Component {
             key  : prevState.key + 1
         }))
     }
+
+    deleteTodo(key){
+        this.setState((prevState) => ({
+            todo : prevState.todo.filter(x => x.key != key)
+        }))
+    }
     
     render() {
         return (
-            <View>
+            <View onPress={() => Keyboard.dismiss()}>
                 <Header/>
                 {/* Create Todo */}
                 <Form addNewTodo = {this.addNewTodo} />
@@ -39,7 +46,7 @@ export default class App extends Component {
                     key = {(item) => item.key}
                     data = {this.state.todo}
                     renderItem = {({item}) => (
-                        <Todo obj={item}/>
+                        <Todo obj={item} deleteTodo = {this.deleteTodo}/>
                     )}
                 />
                 {/* For StatusBar */}
