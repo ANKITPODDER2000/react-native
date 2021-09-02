@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 
 export default class Form extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ export default class Form extends Component {
                         onPress={this.handlePress}
                     >
                         <View>
-                            <Text style={{color:'#fff'}}>></Text>
+                        <Ionicons name="add" size={24} color="#fff" />
                         </View>
                     </TouchableHighlight>
                 </View>
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         width : '100%',
         height : 30,
         paddingLeft : 10,
-        borderWidth : 2,
+        borderBottomWidth : 2,
         borderColor : '#fff',
         borderBottomColor : '#0008',
         display : 'flex',

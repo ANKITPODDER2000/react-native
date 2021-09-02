@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default class Todo extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class Todo extends Component {
                 <Text style={{paddingHorizontal : 20}}>{this.props.obj.title}</Text>
                 <TouchableOpacity onPress = {this.handlePress}>
                     <View style={styles.closebtn}>
-                        <Text>X</Text>
+                        <MaterialCommunityIcons name="delete" size={20} color="#000"/>
                     </View>
                 </TouchableOpacity>
             </View>
